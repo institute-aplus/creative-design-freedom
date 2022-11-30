@@ -12,10 +12,11 @@ export class Draggable {
   y: number;
   w: number;
   h: number;
+  angle: number;
   offsetX: number;
   offsetY: number;
 
-  constructor(x : number, y: number, w: number, h: number, p: p5) {
+  constructor(x : number, y: number, w: number, h: number, angle: number, p: p5) {
     this.dragging = false; // Is the object being dragged?
     this.rollover = false; // Is the mouse over the ellipse?
     this.x = x;
@@ -24,6 +25,7 @@ export class Draggable {
     this.h = h;
     this.offsetX = 0;
     this.offsetY = 0;
+    this.angle = angle;
     this.p = p;
   }
 
@@ -54,7 +56,9 @@ export class Draggable {
     } else {
       this.p.fill(175, 200);
     }
+    this.p.rotate(this.angle);
     this.p.rect(this.x, this.y, this.w, this.h);
+    this.p.rotate(-this.angle);
   }
 
   pressed() {

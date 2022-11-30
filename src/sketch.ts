@@ -2,15 +2,31 @@ import p5 from 'p5';
 import { Draggable } from './Draggable';
 
 const sketch = (p: p5): void => {
-  let shape1 : Draggable;
-  let shape2 : Draggable;
+
+  let triangle : Draggable;
+  let longRect: Draggable;
+
+  let allShapes : Draggable[] = [];
 
   p.preload = (): void => {};
 
   p.setup = (): void => {
+    
     p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL);
-    shape1 = new Draggable(100, 100, 50, 50, p);
-    shape2 = new Draggable(150, 100, 50, 50, p);
+
+    for(let i : number = 0; i < 7; i++) { // vertical
+      let rect = new Draggable(100 + i * 10, 100 + i * 10, 100, 20, 0, p);
+      allShapes.push(rect);
+    }
+
+    for(let i: number = 0; i < 4; i++) { // horizontal
+      let rect = new Draggable(150+ i * 10, 100+ i * 10, 20, 100, 0, p);  
+      allShapes.push(rect);
+    }
+    longRect = new Draggable(90, 90, 20, 150, 0, p);
+    allShapes.push(longRect);
+    triangle = new Draggable(600, 600, 10, 50, 0, p);
+    allShapes.push(triangle);
   };
 
   p.windowResized = (): void => {
@@ -18,27 +34,29 @@ const sketch = (p: p5): void => {
   };
 
   p.draw = (): void => {
-    p.background(0);
+    p.background(100);
 
     // translate the brush back to 0,0
     p.translate(-p.windowWidth / 2,-p.windowHeight / 2);
 
-    shape1.over();
-    shape1.update();
-    shape1.show();
-    shape2.over();
-    shape2.update();
-    shape2.show();
+    for(let shape of allShapes) {
+      shape.over();
+      shape.update();
+      shape.show();
+    }
+
   };
 
   p.mousePressed = ():void => {
-    shape1.pressed();
-    shape2.pressed();
+    for(let shape of allShapes) {
+      shape.pressed();
+    }
   }
 
   p.mouseReleased = ():void => {
-    shape1.released();
-    shape2.released();
+    for(let shape of allShapes) {
+      shape.released();
+    }
   }
 };
 
