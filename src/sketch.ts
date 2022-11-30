@@ -53,6 +53,18 @@ const sketch = (p: p5): void => {
     }
   }
 
+  p.touchStarted = ():void => {
+    for(let shape of allShapes) {
+      shape.pressed();
+    }
+  }
+
+  p.touchEnded = ():void => {
+    for(let shape of allShapes) {
+      shape.released();
+    }
+  }
+
   p.mouseReleased = ():void => {
     for(let shape of allShapes) {
       shape.released();
