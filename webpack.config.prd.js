@@ -22,10 +22,10 @@ const config = {
   module: {
     rules: [
       {
-        test: [/\.js$/, /\.jsx/, /\.tsx/],
+        test: [/\.ts/, /\.tsx/],
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: 'ts-loader',
         },
       },
       {
@@ -52,12 +52,12 @@ const config = {
       template: './index.html',
     }),
     new webpack.ProvidePlugin({ 'window.decomp': 'poly-decomp' }),
-    new CopyPlugin([
-      {
-        from: './assets',
-        to: './assets',
-      },
-    ]), // new BundleAnalyzerPlugin()
+    // new CopyPlugin([
+    //   {
+    //     from: './assets',
+    //     to: './assets',
+    //   },
+    // ]), 
   ],
 
   output: {
