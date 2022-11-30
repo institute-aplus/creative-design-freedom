@@ -3,25 +3,21 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-// const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-// const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-
 const config = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/index.ts',
   resolve: {
     alias: {
       Src: path.resolve(__dirname, 'src/'),
       Core: path.resolve(__dirname, 'src/core/'),
       Assets: path.resolve(__dirname, './assets/'),
     },
-    extensions: ['.js', '.tsx'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   devtool: 'cheap-module-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, './assets'),
-    contentBasePublicPath: '/assets',
+    // contentBase: path.resolve(__dirname, './assets'),
+    // contentBasePublicPath: '/assets',
   },
   module: {
     rules: [
@@ -45,15 +41,7 @@ const config = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
-      // {
-      //   test: /\.(gif|png|jpe?g|svg|xml|wav)$/i,
-      //   loader: 'file-loader',
-      //   options: {
-      //     name: '/public/assets/[name].[ext]',
-      //     // publicPath: 'assets',
-      //     // outputPath: 'assets',
-      //   },
-      // },
+
     ],
   },
   plugins: [
@@ -71,20 +59,7 @@ const config = {
       },
     ]), // new BundleAnalyzerPlugin()
   ],
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: "all",
-  //     maxInitialRequests: 5,
-  //     cacheGroups: {
-  //       vendors: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         name: 'vendors',
-  //         chunks: 'all',
-  //         priority: -9
-  //       },
-  //     }
-  //   }
-  // },
+
   output: {
     // filename: `${getAppName()}/[name].bundle.[hash:8].js`,
     filename: 'paparcraft.bundle.js',
@@ -93,7 +68,5 @@ const config = {
   },
 };
 
-// const speedMeasure = new SpeedMeasurePlugin();
-// module.exports = speedMeasure.wrap(config)
 
 module.exports = config;
