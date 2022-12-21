@@ -3,3 +3,9 @@
 // import module = require('p5');
 // export = module;
 // export as namespace p5;
+
+declare module "*.svg" {
+    const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+    export default content;
+  }
+  

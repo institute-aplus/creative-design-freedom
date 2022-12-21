@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const config = {
   mode: 'development',
@@ -15,8 +16,9 @@ const config = {
   },
   devtool: 'cheap-module-source-map',
   devServer: {
-    // contentBase: path.resolve(__dirname, './assets'),
-    // contentBasePublicPath: '/assets',
+    static: {
+      directory: path.join(__dirname, './')
+    }
   },
   module: {
     rules: [
@@ -40,10 +42,10 @@ const config = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
-      // {
-      //   test: /\.(gif|png|jpe?g|svg|xml|wav)$/i,
-      //   use: "file-loader"
-      // }
+      {
+        test: /\.(gif|png|jpe?g|svg|xml|wav)$/i,
+        use: "file-loader"
+      }
     ],
   },
   plugins: [
@@ -54,6 +56,11 @@ const config = {
       template: './index.html',
     }),
     new webpack.ProvidePlugin({ 'window.decomp': 'poly-decomp' }),
+    new CopyPlugin({
+      patterns:[
+        {from: "assets", to: "assets"}
+      ]
+    })
     // new BundleAnalyzerPlugin()
   ],
 
