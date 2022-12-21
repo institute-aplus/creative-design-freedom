@@ -41,7 +41,10 @@ const config = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
-
+      {
+        test: /\.(gif|png|jpe?g|svg|xml|wav)$/i,
+        use: "file-loader"
+      }
     ],
   },
   plugins: [
@@ -52,12 +55,11 @@ const config = {
       template: './index.html',
     }),
     new webpack.ProvidePlugin({ 'window.decomp': 'poly-decomp' }),
-    // new CopyPlugin([
-    //   {
-    //     from: './assets',
-    //     to: './assets',
-    //   },
-    // ]), 
+    new CopyPlugin({
+      patterns:[
+        {from: "assets", to: "assets"}
+      ]
+    })
   ],
 
   output: {
