@@ -10,8 +10,7 @@
         "test": "echo \"Error: no test specified\"",
         "lint": "eslint src --max-warnings 0",
         "lintfix": "npm run lint -- --fix",
-        "release": "standard-version",
-        "prepare": "husky install"
+        "release": "standard-version"
     },
     "dependencies": {
         "@types/p5": "^1.4.3",
