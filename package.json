@@ -7,7 +7,7 @@
         "build": "webpack --config webpack.config.dev.js",
         "start": "webpack-dev-server --config webpack.config.dev.js --open",
         "startA": "webpack-dev-server --open --mode=development",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "echo \"Error: no test specified\"",
         "lint": "eslint src --max-warnings 0",
         "lintfix": "npm run lint -- --fix",
         "release": "standard-version",
