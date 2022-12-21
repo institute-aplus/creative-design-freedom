@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header';
 export default function App() {
+  const [show, setShow] = React.useState<Boolean> ();
   return (
     <div className='container'>
     <Header />
