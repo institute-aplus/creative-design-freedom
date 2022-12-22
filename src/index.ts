@@ -1,2 +1,2 @@
-import './sketch';
+// import './sketch';
 import './view';
