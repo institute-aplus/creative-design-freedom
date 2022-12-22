@@ -5,32 +5,35 @@ export default function Header() {
 
   return (
     <div className="header">
-      <div
-        className='btn'
-        onClick={() => {
-          console.log('???');
-          setPosition('puzzle');
-        }}
-      >
-        Puzzle
-      </div>
-      <div
-        className='btn'
-        onClick={() => {
-          console.log('???');
-          setPosition('Concept');
-        }}
-      >
-        Concept
-      </div>
-      <div
-        className='btn'
-        onClick={() => {
-          console.log('???');
-          setPosition('About');
-        }}
-      >
-        About Us
+      <div className="btn logo">JIYUU</div>
+      <div className="btns">
+        <div
+          className="btn"
+          onClick={() => {
+            console.log('???');
+            setPosition('puzzle');
+          }}
+        >
+          Play Puzzle
+        </div>
+        <div
+          className="btn"
+          onClick={() => {
+            console.log('???');
+            setPosition('Concept');
+          }}
+        >
+          Concept
+        </div>
+        <div
+          className="btn"
+          onClick={() => {
+            console.log('???');
+            setPosition('About');
+          }}
+        >
+          About Us
+        </div>
       </div>
     </div>
   );

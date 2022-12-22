@@ -16,6 +16,7 @@ export default function App() {
       <Header />
       {/* <button>test button</button> */}
       <div className='container form'>
+        <h1>Play Puzzle</h1>
         <canvas className='puzzle' ref={canvasRef}></canvas>
         <div className='contents'>
           contents
