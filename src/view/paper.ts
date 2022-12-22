@@ -6,33 +6,38 @@ declare global {
   interface Window { svgs: SVGElement[]; }
 }
 
-paper.install(window);
+// install paper to the global environment
+// this will pollute the environment
+// might not be a good idea;
+// paper.install(window);
 
-function importSVG(piece, project) {
+function importSVG(piece : SVGElement) {
   return new Promise<paper.Item>(resolve => {
-    project.importSVG(piece, data => resolve(data as paper.Item))
+    paper.project.importSVG(piece, (data : paper.Item) => resolve(data as paper.Item))
   })
 }
 
 export default async function SetUpPaper(canvas : HTMLCanvasElement) {
-  // paper.setup(canvas);
-  const project = new Project(canvas);
 
-  const puzzles = await Promise.all(pieces.map(p => importSVG(p, project)));
+  // these two seem like doing the same thing
+  // not sure what are the differences
+  // need investigate
+  paper.setup(canvas)
+  // const project : paper.Project = new paper.Project(canvas);
+
+  const puzzles : paper.Item[] = await Promise.all(pieces.map(p => importSVG(p)));
 
   puzzles.forEach((item, index) => {
     item.position = new paper.Point(50 + 200 * index, 50 + 10 * index);
-
   })
 
-  view.onMouseDrag = (event) => {
-    for(let p of puzzles){
+  paper.view.onMouseDrag = (event : paper.MouseEvent) => {
 
+    for(let p of puzzles){
       if(p.contains(event.point)) {
         p.position = new paper.Point(p.position.x + event.delta.x, p.position.y + event.delta.y);
         break;
       }
-      
     }
   }
 

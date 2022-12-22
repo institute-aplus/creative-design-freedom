@@ -8,15 +8,12 @@ export default function Header() {
         <div className='header'>
             <div>
                 <button onClick={() => {setPosition("puzzle")}}>Puzzle</button>
-
             </div>
             <div>
                 <button onClick={() => {setPosition("puzzle")}}>About</button>
-
             </div>
             <div>
                 <button onClick={() => {setPosition("puzzle")}}>Contents</button>
-
             </div>
         </div>
     )
