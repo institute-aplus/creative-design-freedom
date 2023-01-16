@@ -14,6 +14,16 @@ const pieces = [
   piece6,
 ]
 
+const positions = [
+  [100, 50],
+  [99, 110],
+  [100, 171],
+  [250, 200],
+  [339, 274],
+  [242, 310],
+]
+
 export {
-  pieces
+  pieces,
+  positions
 }
