@@ -14,11 +14,11 @@ declare global {
 // might not be a good idea;
 // paper.install(window);
 
-// function importSVG(piece : string) {
-//   return new Promise<paper.Item>(resolve => {
-//     paper.project.importSVG(piece, (data : paper.Item) => resolve(data as paper.Item))
-//   })
-// }
+function importSVG(piece : string) {
+  return new Promise<paper.Item>(resolve => {
+    paper.project.importSVG(piece, (data : paper.Item) => resolve(data as paper.Item))
+  })
+}
 
 function importSVGasPath(piece: string) {
   return new Promise<paper.Path>(resolve => {
@@ -30,12 +30,9 @@ function importSVGasPath(piece: string) {
       for (let pathNode of nodelist) {
         const d = pathNode.getAttribute('d');
         const t = new Path(d);
-        console.log(d);
         pitem.addSegments(t.segments);
       }
-
-      // new Project(document.createElement('canvas'));
-
+      // pitem.scale(0.1);
       resolve(pitem);
     });
     // resolve(pitem);
@@ -55,7 +52,11 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
   // need investigate
   // new Project(canvas);
   paper.setup(canvas);
+  
+
   const project: paper.Project = new Project(canvas);
+  console.log(project.view.size);
+
 
   const spaces: paper.Path[] = await Promise.all(
     pieces.map(p => importSVGasPath(p)),
@@ -64,6 +65,7 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
     pieces.map(p => importSVGasPath(p)),
   );
   const puzzleSymbols: any[] = [];
+  const scale = 0.001 * project.view.size.width;
 
   puzzles.forEach((item, index) => {
     // item.position = new paper.Point(100 + 150 * index, 100 + 10 * index);
@@ -71,6 +73,8 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
       100 + Math.random() * (canvas.width - 100),
       100 + Math.random() * (canvas.height - 100),
     );
+
+    item.scale(scale);
 
     item.style = {
       ...item.style,
@@ -83,14 +87,15 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
 
       let symbol = new SymbolItem(raster);
       symbol.position = item.position;
+      symbol.scale(scale);
       puzzleSymbols.push(symbol);
     }
   });
 
   spaces.forEach((item, index) => {
     item.position = new paper.Point(
-      positions[index][0] + 300,
-      positions[index][1] + 100,
+      (positions[index][0] + 300) * scale,
+      (positions[index][1] + 100) * scale,
     );
     item.style = {
       ...item.style,
@@ -98,6 +103,9 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
       strokeColor: new paper.Color('white'),
       strokeWidth: 1,
     };
+
+    item.scale(scale);
+
     // item.idx = index;
   });
 
