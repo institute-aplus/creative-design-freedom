@@ -2,6 +2,7 @@ import * as paper from 'paper';
 import { pieces, positions, symbols } from './helpers/svgs';
 import { getPath, loadSvg } from './helpers/svg';
 import { Camera } from 'p5';
+import { project } from 'paper/dist/paper-core';
 
 declare global {
   interface Window {
@@ -68,8 +69,8 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
 
   puzzles.forEach((item, index) => {
     item.position = new paper.Point(
-      Math.random() * (canvas.width - 100),
-      Math.random() * (canvas.height - 100),
+      Math.random() * (paper.project.view.size.width),
+      Math.random() * (paper.project.view.size.height),
     );
 
     item.scale(scale);
