@@ -1,7 +1,7 @@
 import * as paper from 'paper';
-import { Project, Path, Color, Size, SymbolItem } from 'paper/dist/paper-core';
 import { pieces, positions, symbols } from './helpers/svgs';
 import { getPath, loadSvg } from './helpers/svg';
+import { Camera } from 'p5';
 
 declare global {
   interface Window {
@@ -26,10 +26,10 @@ function importSVGasPath(piece: string) {
       const pathNodes = svg.querySelectorAll('path');
       // console.log(pathNodes, piece)
       const nodelist = Array.from(pathNodes);
-      const pitem = new Path();
+      const pitem = new paper.Path();
       for (let pathNode of nodelist) {
         const d = pathNode.getAttribute('d');
-        const t = new Path(d);
+        const t = new paper.Path(d);
         pitem.addSegments(t.segments);
       }
       // pitem.scale(0.1);
@@ -51,24 +51,22 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
   // not sure what are the differences
   // need investigate
   // new Project(canvas);
-  paper.setup(canvas);
   
 
-  const project: paper.Project = new Project(canvas);
-  console.log(project.view.size);
+  paper.setup(canvas);
+  // paper.project.view.translate(new paper.Point(0, -100))
+  // paper.project.view.autoUpdate = true;
 
-
-  const spaces: paper.Path[] = await Promise.all(
-    pieces.map(p => importSVGasPath(p)),
+  const spaces: paper.Item[] = await Promise.all(
+    pieces.map(p => importSVG(p)),
   );
-  const puzzles: paper.Path[] = await Promise.all(
-    pieces.map(p => importSVGasPath(p)),
+  const puzzles: paper.Item[] = await Promise.all(
+    pieces.map(p => importSVG(p)),
   );
   const puzzleSymbols: any[] = [];
-  const scale = 0.001 * project.view.size.width;
+  const scale = 1;
 
   puzzles.forEach((item, index) => {
-    // item.position = new paper.Point(100 + 150 * index, 100 + 10 * index);
     item.position = new paper.Point(
       100 + Math.random() * (canvas.width - 100),
       100 + Math.random() * (canvas.height - 100),
@@ -85,7 +83,8 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
       // console.log(item)
       let raster: paper.Raster = new paper.Raster(symbols[index]);
 
-      let symbol = new SymbolItem(raster);
+      let symbol = new paper.SymbolItem(raster);
+      // item.addChild(symbol)
       symbol.position = item.position;
       symbol.scale(scale);
       puzzleSymbols.push(symbol);
@@ -124,6 +123,7 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
 
   paper.view.onMouseEnter = event => {
     let c = 0;
+    console.log(event.point); 
     for (let p of puzzles) {
       if (!usedPuzzle.includes(p.id)) {
         if (p.contains(event.point)) {
@@ -139,9 +139,12 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
 
   paper.view.onClick = event => {
     let c = 0;
+    console.log(event.point); 
+
     for (let p of puzzles) {
       if (!usedPuzzle.includes(p.id)) {
         if (p.contains(event.point)) {
+          console.log(event.point, p.position, p.bounds)
           select = {
             item: p,
             id: c,

@@ -5,27 +5,31 @@ import piece4 from 'Assets/yu4.svg';
 import piece5 from 'Assets/yu5.svg';
 import piece6 from 'Assets/yu6.svg';
 import symbol1 from 'Assets/ji1aki.png';
+import symbol6 from 'Assets/yu6cy.png';
 
 const pieces = [
   piece1,
+  piece6,
   piece2,
   piece3,
   piece4,
   piece5,
-  piece6,
+
 ]
 
 const positions = [
   [100, 50],
+  [250, 310],
   [100, 165],
   [100, 200],
   [265, 190],
   [335, 274],
-  [250, 310],
+
 ]
 
 const symbols = [
-  symbol1
+  symbol1,
+  symbol6
 ]
 
 export {

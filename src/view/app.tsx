@@ -5,11 +5,12 @@ import symbol1 from 'Assets/jiyuaki.jpg';
 import './styles.css';
 
 export default function App() {
-  const [show, setShow] = React.useState<Boolean> ();
   const canvasRef = React.useRef();
+  const [width, setWidth] = React.useState(0);
 
   React.useLayoutEffect(() => {
     SetUpPaper(canvasRef.current);
+    setWidth(canvasRef.current ? width : 0);
   })
 
   return (
@@ -20,7 +21,7 @@ export default function App() {
         <h1>Play Puzzle</h1>
         <canvas className='puzzle' ref={canvasRef}></canvas>
         <div className='contents'>
-          contents
+          <h1>{width}</h1>
         </div>
 
         <div className='about'>about</div>

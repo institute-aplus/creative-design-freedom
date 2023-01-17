@@ -62,10 +62,3 @@ h1 {
     justify-content: space-between;
     padding-left: 5%;
 }
-
-.mask1 {
-    -webkit-mask-image: url(Assets/ji1.png);
-    mask-image: url(Assets/ji1.png);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-  }

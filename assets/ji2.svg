@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="500" height="500" viewBox="0 0 500 500" xml:space="preserve">
-<desc>Created with Fabric.js 4.6.0</desc>
-<defs>
-</defs>
-<g transform="matrix(1 0 0 1 126.85 235.96)" id="hz4Wx8oXNGROgMIXXu1s9"  >
-<path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-opacity: 0; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M -88.0396 -59.40561 L -88.0396 26.648130000000002 L -71.03446 26.648130000000002 L -65.54406999999999 78.57691 L -46.37276999999999 106.14152 L -46.37276999999999 -10.538839999999993 L 48.96612000000002 -10.538839999999993 L 48.96612000000002 4.152590000000007 L 88.03959000000002 -35.52190999999999 L 88.03959000000002 -106.14151999999999 L 66.25365000000002 -84.35557999999999 L 66.25365000000002 -99.46668 L 52.673120000000026 -87.59553 L 52.673120000000026 -35.521919999999994 L -46.372769999999974 -35.521919999999994 L -46.372769999999974 -79.43529999999998 L -71.03445999999997 -55.88536999999998 L -71.03445999999997 -79.43529999999998 z" stroke-linecap="round" />
-</g>
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 181 218" width="181" height="218">
+	<title>Layer</title>
+	<style>
+		.s0 { fill: #000000;stroke: #000000 } 
+	</style>
+	<path id="Layer" class="s0" d="m19.8 29.5v23.6l24.7-23.6v43.9h99v-52l13.6-11.9v15.1l21.8-21.8v70.6l-39.1 39.7v-14.7h-95.3v116.7l-19.2-27.6-5.5-51.9h-17v-86z"/>
 </svg>

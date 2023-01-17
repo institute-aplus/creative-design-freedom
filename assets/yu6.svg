@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="500" height="500" viewBox="0 0 500 500" xml:space="preserve">
-<desc>Created with Fabric.js 4.6.0</desc>
-<defs>
-</defs>
-<g transform="matrix(1 0 0 1 146.89 281.18)" id="r7SnUyuJQXR-XaL-CvgEs"  >
-<path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-opacity: 0; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M -63.56183 -60.85695 L -63.56183 60.85694000000001 L 47.47586 60.85694000000001 L 63.56182 44.77098000000001 L 41.54114 22.97094000000001 L 41.54114 -13.37920999999999 L 51.18506 -13.37920999999999 L 51.18506 -30.68335999999999 L 12.367550000000001 -30.68335999999999 L 12.367550000000001 22.97094000000001 L -33.39069 22.97094000000001 L -33.39069 -30.68335999999999 z" stroke-linecap="round" />
-</g>
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 127" width="132" height="127">
+	<title>Layer</title>
+	<style>
+		.s0 { fill: #000000;stroke: #000000 } 
+	</style>
+	<path id="Layer" class="s0" d="m32.5 32.5v53.7h45.8v-53.7h38.8v17.3h-9.7v36.4l22.1 21.8-16.1 16h-111.1v-121.7z"/>
 </svg>
