@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header';
 import SetUpPaper from './paper';
+import symbol1 from 'Assets/jiyuaki.jpg';
 import './styles.css';
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <div className='contents'>
           contents
         </div>
+
         <div className='about'>about</div>
       </div>
     </div>

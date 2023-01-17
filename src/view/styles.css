@@ -2,6 +2,7 @@ html, body{
     height: 2000px;
     width: 100%;
     background-color: #1E1E1E;
+    overflow: auto;
 }
 
 h1 {
@@ -56,10 +57,15 @@ h1 {
 .header {
     background-color: #006F57;
     height: 5%;
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-left: 5%;
-    margin-right: 5%;
 }
+
+.mask1 {
+    -webkit-mask-image: url(Assets/ji1.png);
+    mask-image: url(Assets/ji1.png);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
