@@ -68,8 +68,8 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
 
   puzzles.forEach((item, index) => {
     item.position = new paper.Point(
-      100 + Math.random() * (canvas.width - 100),
-      100 + Math.random() * (canvas.height - 100),
+      Math.random() * (canvas.width - 100),
+      Math.random() * (canvas.height - 100),
     );
 
     item.scale(scale);
