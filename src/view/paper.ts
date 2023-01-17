@@ -15,10 +15,12 @@ declare global {
 // might not be a good idea;
 // paper.install(window);
 
-function importSVG(piece : string) {
+function importSVG(piece: string) {
   return new Promise<paper.Item>(resolve => {
-    paper.project.importSVG(piece, (data : paper.Item) => resolve(data as paper.Item))
-  })
+    paper.project.importSVG(piece, (data: paper.Item) =>
+      resolve(data as paper.Item),
+    );
+  });
 }
 
 function importSVGasPath(piece: string) {
@@ -52,15 +54,12 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
   // not sure what are the differences
   // need investigate
   // new Project(canvas);
-  
 
   paper.setup(canvas);
   // paper.project.view.translate(new paper.Point(0, -100))
   // paper.project.view.autoUpdate = true;
 
-  const spaces: paper.Item[] = await Promise.all(
-    pieces.map(p => importSVG(p)),
-  );
+  const spaces: paper.Item[] = await Promise.all(pieces.map(p => importSVG(p)));
   const puzzles: paper.Item[] = await Promise.all(
     pieces.map(p => importSVG(p)),
   );
@@ -69,8 +68,8 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
 
   puzzles.forEach((item, index) => {
     item.position = new paper.Point(
-      Math.random() * (paper.project.view.size.width),
-      Math.random() * (paper.project.view.size.height),
+      Math.random() * paper.project.view.size.width,
+      Math.random() * paper.project.view.size.height,
     );
 
     item.scale(scale);
@@ -124,7 +123,7 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
 
   paper.view.onMouseEnter = event => {
     let c = 0;
-    console.log(event.point); 
+    console.log(event.point);
     for (let p of puzzles) {
       if (!usedPuzzle.includes(p.id)) {
         if (p.contains(event.point)) {
@@ -140,12 +139,12 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
 
   paper.view.onClick = event => {
     let c = 0;
-    console.log(event.point); 
+    console.log(event.point);
 
     for (let p of puzzles) {
       if (!usedPuzzle.includes(p.id)) {
         if (p.contains(event.point)) {
-          console.log(event.point, p.position, p.bounds)
+          console.log(event.point, p.position, p.bounds);
           select = {
             item: p,
             id: c,
@@ -164,16 +163,23 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
         p.position.x + event.delta.x,
         p.position.y + event.delta.y,
       );
+
       if (puzzleSymbols[select.id])
         puzzleSymbols[select.id].position = p.position;
+
       if (dist(spaces[select.id].position, p.position) < 100) {
         p.position = spaces[select.id].position;
+
         if (puzzleSymbols[select.id])
           puzzleSymbols[select.id].position = p.position;
+
         usedPuzzle.push(p.id);
+
+        window.dispatchEvent(
+          new CustomEvent('puzzle-correct', { detail: select.id } as any),
+        );
         select = undefined;
       }
     }
   };
-
 }
