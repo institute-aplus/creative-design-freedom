@@ -1,0 +1,25 @@
+{
+  "aki": {
+    "image": "../../assets/aki.jpg",
+    "statement": "Freedom to me, means to be able to be my true self. <br /> In Japan, we are far from being gender equal and it is still a very male-dominated society. Many women face the problem of having to choose between having a career and having a family. Also, while living in Japan, I felt the social pressure to be the perfect girl, which has been predefined by the Japanese society through media, literature, language, etc. For example, the term 女子力 (jyoshiryoku) is a term that people use to to evaluate how much a girl is “girly”, meaning her make up/hair/fashion is always on point, she knows how to cook, she has a slim figure, etc. I feel free not having this pressure, now that I am living in a country where this concept of 女子力 does not exist."
+  
+  },
+  "congyao": {
+    "image": "../../assets/congyao.png",
+    "statement": "The strict censorship and surveillance in China. <b>Sitong Bridge Protest</b> was a one-man protest that triggered a series of followers in 2022, right before the meeting for Xi Jinping to extend his third term as the President of China. The protester was arrested in half an hour, yet his slogan echoed with the public. Due to the strict censorship and surveillance in China, it was hard to spread any related information. People started using <b>AirDrop</b> to share the protest poster and slogans, because it is untrace-able. Yet, in two weeks, <b>Apple</b> modified the AirDrop feature for Mainland China iPhones specifically so that airdropping to strangers nearby is almost impossible. To enable the freedom of speech and to circulate uncensored information, I made the ESP32 WIFI station, which allows uncensored information sharing in the local area network. It can be disguised with casual wrappings. In this installment, I put it in the red round exclamation mark symbol. This symbol usually appeared when a post or the author’s account is deleted due to censorship on social media in China."
+  },
+  "alex": {
+    "image": "",
+    "statement": "VR experience in a room full of items with personal meanings. Grab them and discover my thoughts and what made me the person I am now."
+  },
+  "clem": {
+    "image": "",
+    "statement": ""
+  },
+  "chenxi": {
+    "image": "",
+    "statement": ""
+  },
+  "custom": {
+  }
+}
