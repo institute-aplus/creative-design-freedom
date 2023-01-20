@@ -1,8 +1,6 @@
 import * as paper from 'paper';
 import { pieces, positions, symbols } from './helpers/svgs';
-import { getPath, loadSvg } from './helpers/svg';
-import { Camera } from 'p5';
-import { project } from 'paper/dist/paper-core';
+import { loadSvg } from './helpers/svg';
 
 declare global {
   interface Window {
@@ -67,9 +65,14 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
   const scale = 1;
 
   puzzles.forEach((item, index) => {
+    if(index === 5) {
+      item.position = new paper.Point(-500, -500);
+      return
+    }
+
     item.position = new paper.Point(
-      Math.random() * paper.project.view.size.width,
-      Math.random() * paper.project.view.size.height,
+      100 + Math.random() * ( paper.project.view.size.width - 200),
+      100 + Math.random() * ( paper.project.view.size.height - 200),
     );
 
     item.scale(scale);
@@ -139,12 +142,13 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
 
   paper.view.onClick = event => {
     let c = 0;
-    console.log(event.point);
+    // console.log(event.point);
+    const curPoint = new paper.Point(event.point.x, event.point.y + document.body.scrollTop);
 
     for (let p of puzzles) {
       if (!usedPuzzle.includes(p.id)) {
-        if (p.contains(event.point)) {
-          console.log(event.point, p.position, p.bounds);
+        if (p.contains(curPoint)) {
+          // console.log(event.point, p.position, p.bounds);
           select = {
             item: p,
             id: c,
@@ -156,6 +160,8 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
   };
 
   paper.view.onMouseDrag = (event: paper.MouseEvent) => {
+    // console.log(document.body.scrollTop);
+
     if (!select) return;
     const p = select.item;
     if (!usedPuzzle.includes(p.id)) {
@@ -179,6 +185,9 @@ export default async function SetUpPaper(canvas: HTMLCanvasElement) {
           new CustomEvent('puzzle-correct', { detail: select.id } as any),
         );
         select = undefined;
+
+        if(usedPuzzle.length === 5) puzzles[5].position = new paper.Point(700, 300);
+
       }
     }
   };

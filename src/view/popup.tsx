@@ -18,26 +18,28 @@ export default function PopUp({ detail }: { detail: any }) {
             </div>
           </div>
 
-          <div className="overview">
-            <h1>{sources[detail]['name']}</h1>
+          {detail < 5 && (
+            <div className="overview">
+              <h1>{sources[detail]['name']}</h1>
 
-            <div className="cover-image">
-              <img
-                src={sources[detail]['image']}
-                style={{
-                  maxHeight: '200px',
-                  alignSelf: 'center',
-                  padding: '2%',
-                }}
-              ></img>
-              <a
-                dangerouslySetInnerHTML={{
-                  __html: sources[detail]['statement'],
-                }}
-              ></a>
+              <div className="cover-image">
+                <img
+                  src={sources[detail]['image']}
+                  style={{
+                    maxHeight: '200px',
+                    alignSelf: 'center',
+                    padding: '2%',
+                  }}
+                ></img>
+                <a
+                  dangerouslySetInnerHTML={{
+                    __html: sources[detail]['statement'],
+                  }}
+                ></a>
+              </div>
+              {/* <br /> */}
             </div>
-            {/* <br /> */}
-          </div>
+          )}
         </div>
       )}
     </>

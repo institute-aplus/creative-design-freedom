@@ -1,17 +1,25 @@
 import React from 'react';
 import './styles.css';
 export default function Header() {
-  const [position, setPosition] = React.useState<String>('');
+  // const [position, setPosition] = React.useState<String>('');
 
   return (
     <div className="header">
-      <div className="btn logo">JIYUU</div>
+      <div
+        className="btn logo"
+        onClick={() => {
+          location.href = 'https://github.com/cy-moi/creative-design-freedom';
+        }}
+      >
+        JIYUU
+      </div>
       <div className="btns">
         <div
           className="btn"
           onClick={() => {
-            console.log('???');
-            setPosition('puzzle');
+            location.reload();
+            // console.log('???');
+            // setPosition('puzzle');
           }}
         >
           Play Puzzle
@@ -19,17 +27,23 @@ export default function Header() {
         <div
           className="btn"
           onClick={() => {
-            console.log('???');
-            setPosition('Concept');
+            // console.log('???');
+            // setPosition('Concept');
+            document
+              .getElementById('concept')
+              .scrollIntoView({ behavior: 'smooth' });
           }}
         >
-          Concept
+          Concepts
         </div>
         <div
           className="btn"
           onClick={() => {
-            console.log('???');
-            setPosition('About');
+            // console.log('???');
+            // setPosition('About');
+            document
+              .getElementById('aboutus')
+              .scrollIntoView({ behavior: 'smooth' });
           }}
         >
           About Us
