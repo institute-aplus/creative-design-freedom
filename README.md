@@ -2,8 +2,8 @@
 
 # Free Station
 
-[![types/react]](https://badgen.net/npm/types/react)
-[![paper.js]](https://badgen.net/badge/0.12.17/paper.js)
+!\[types/react\](https://badgen.net/npm/types/react)
+!\[paper.js\](https://badgen.net/badge/0.12.17/paper.js)
 
 Free Station is a digital collage and a **multimedia installment** piece @ Creative Design 2023 exhibition.
 
