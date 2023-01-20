@@ -13,6 +13,10 @@ export default function PopUpSketch({ detail }: { detail: any }) {
     if (detail === 5) SetUpSketch(canvasRef.current);
   }, [detail]);
 
+  const getBase64 = () => {
+    return (document.getElementById('sketchpad') as HTMLCanvasElement).toDataURL();
+  };
+
   return (
     <>
       {show && (
@@ -28,9 +32,12 @@ export default function PopUpSketch({ detail }: { detail: any }) {
           </div>
           {detail === 5 && (
             <div>
-              {status !== 'Send' && (
-                <canvas className="sketch" ref={canvasRef}></canvas>
-              )}
+              <canvas
+                className="sketch"
+                id="sketchpad"
+                ref={canvasRef}
+                style={{ display: status === 'Send' ? 'block' : 'hidden' }}
+              ></canvas>
 
               <div className="emailform">
                 {status === 'Send' && (
@@ -41,6 +48,7 @@ export default function PopUpSketch({ detail }: { detail: any }) {
                         type="text"
                         value={email}
                         onChange={e => {
+                          // console.log(e.target.value);
                           setEmail(e.target.value);
                         }}
                       />
@@ -54,7 +62,10 @@ export default function PopUpSketch({ detail }: { detail: any }) {
                   className="btn border"
                   onClick={() => {
                     if (status !== 'Send') setStatus('Send');
-                    else location.reload();
+                    else {
+                      console.log(email);
+                      sendSketchToEmail(email, 'Creative Designer', getBase64());
+                    }
                   }}
                 >
                   {status === 'Send' ? 'Send & End Journey' : status}
