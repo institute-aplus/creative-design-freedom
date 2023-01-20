@@ -1,9 +1,9 @@
 <div align="center">
 
 # Free Station
-
-!\[types/react\](https://badgen.net/npm/types/react)
-!\[paper.js\](https://badgen.net/badge/0.12.17/paper.js)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![paper.js](https://img.shields.io/badge/paper.js-ED225D?style=for-the-badge&logo=paper.js&logoColor=FFFFFF)
 
 Free Station is a digital collage and a **multimedia installment** piece @ Creative Design 2023 exhibition.
 
